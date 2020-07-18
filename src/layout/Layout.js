@@ -12,7 +12,7 @@ const Background = styled.div`
   z-index: -1;
 `
 
-const Content = styled.main`
+const Content = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;

@@ -10,6 +10,7 @@ export const theme = {
   fonts: {
     mainFont: `'Barlow Semi Condensed', sans-serif`,
   },
+  white: 'hsl(0, 0%, 100%)',
   dark: 'hsl(229, 25%, 31%)',
   score: 'hsl(229, 64%, 46%)',
   gray: 'hsl(217, 16%, 45%)',
@@ -19,7 +20,7 @@ export const theme = {
   paper: 'linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%))',
   rock: 'linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%))',
   lizard: 'linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%))',
-  cyan: 'linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%))',
+  spock: 'linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%))',
   semiBold: 600,
   bold: 700,
   fontSize: {
