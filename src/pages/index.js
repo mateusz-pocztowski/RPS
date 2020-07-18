@@ -4,13 +4,21 @@ import GameLayout from 'layouts/GameLayout'
 import SEO from 'components/SEO/SEO'
 import Menu from 'steps/Menu/Menu'
 import Options from 'steps/Options/Options'
-import StepContext from 'context/StepContext'
+import AppContext from 'context/AppContext'
 
 const IndexPage = () => {
   const [activeStep, setActiveStep] = useState('menu')
+  const [mode, setMode] = useState(null)
+
+  const value = {
+    activeStep,
+    setActiveStep,
+    mode,
+    setMode,
+  }
 
   return (
-    <StepContext.Provider value={{ activeStep, setActiveStep }}>
+    <AppContext.Provider value={value}>
       <MainLayout>
         <SEO title="Home" />
         {activeStep === 'menu' ? (
@@ -21,7 +29,7 @@ const IndexPage = () => {
           </GameLayout>
         )}
       </MainLayout>
-    </StepContext.Provider>
+    </AppContext.Provider>
   )
 }
 

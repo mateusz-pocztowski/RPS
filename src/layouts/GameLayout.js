@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import AppContext from 'context/AppContext'
+import Rules from 'components/Rules/Rules'
 import Header from 'components/Header/Header'
 import Button from 'components/Button/Button'
 
@@ -11,26 +13,45 @@ const Content = styled.main`
 const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  ${({ theme }) => theme.mq.md} {
-    justify-content: flex-end;
+  & > * {
+    margin-bottom: 10px;
+  }
+  ${({ theme }) => theme.mq.s} {
+    justify-content: space-between;
+    flex-direction: row;
   }
 `
 
 const GameLayout = ({ children }) => {
+  const [areRulesVisible, setRulesVisibility] = useState(false)
+  const { setMode, setActiveStep } = useContext(AppContext)
+
+  const handleChangeMode = () => {
+    setMode(null)
+    setActiveStep('menu')
+  }
+
+  const toggleRulesVisibility = () => {
+    setRulesVisibility(!areRulesVisible)
+  }
+
   return (
     <>
       <Header />
       <Content>{children}</Content>
       <ButtonWrapper>
-        <Button>Rules</Button>
+        <Button onClick={handleChangeMode}>Change mode</Button>
+        <Button onClick={toggleRulesVisibility}>Rules</Button>
       </ButtonWrapper>
+      <Rules isVisible={areRulesVisible} close={toggleRulesVisibility} />
     </>
   )
 }
 
 GameLayout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.element.isRequired,
 }
 
 export default GameLayout

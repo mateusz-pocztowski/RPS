@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Button from 'components/Button/Button'
-import LogoImg from 'icons/logo.svg'
+import Logo from 'components/Logo/Logo'
+import AppContext from 'context/AppContext'
 
 const Wrapper = styled.nav`
   width: 100%;
@@ -15,16 +16,6 @@ const Wrapper = styled.nav`
   align-items: center;
 `
 
-const LogoWrapper = styled.div`
-  width: 120px;
-`
-
-const Logo = styled.img`
-  display: block;
-  width: 100%;
-  height: 100%;
-`
-
 const Title = styled.h1`
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.fontSize.xl};
@@ -36,21 +27,32 @@ const ButtonWrapper = styled.div`
   margin: 10px 0;
 `
 
-const Menu = () => (
-  <>
-    <LogoWrapper>
-      <Logo src={LogoImg} alt="logo" />
-    </LogoWrapper>
-    <Wrapper>
-      <Title>Choose Mode</Title>
-      <ButtonWrapper>
-        <Button secondary>Normal</Button>
-      </ButtonWrapper>
-      <ButtonWrapper>
-        <Button secondary>Advanced</Button>
-      </ButtonWrapper>
-    </Wrapper>
-  </>
-)
+const Menu = () => {
+  const { setMode, setActiveStep } = useContext(AppContext)
+
+  const handleOption = type => {
+    setActiveStep('optionChoose')
+    setMode(type)
+  }
+
+  return (
+    <>
+      <Logo />
+      <Wrapper>
+        <Title>Choose Mode</Title>
+        <ButtonWrapper>
+          <Button onClick={() => handleOption('normal')} secondary>
+            Normal
+          </Button>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Button secondary onClick={() => handleOption('advanced')}>
+            Advanced
+          </Button>
+        </ButtonWrapper>
+      </Wrapper>
+    </>
+  )
+}
 
 export default Menu

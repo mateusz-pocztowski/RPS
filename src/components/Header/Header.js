@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logoImg from 'icons/logo.svg'
-import logo2Img from 'icons/logo-bonus.svg'
-import PropTypes from 'prop-types'
+import Logo from 'components/Logo/Logo'
 
 const Wrapper = styled.header`
   display: flex;
@@ -11,16 +9,6 @@ const Wrapper = styled.header`
   border: 3px solid ${({ theme }) => theme.gray};
   padding: 12px;
   border-radius: 8px;
-`
-
-const LogoWrapper = styled.div`
-  width: 120px;
-`
-
-const Logo = styled.img`
-  display: block;
-  width: 100%;
-  height: 100%;
 `
 
 const ScoreWrapper = styled.div`
@@ -46,24 +34,14 @@ const Score = styled.span`
   font-weight: ${({ theme }) => theme.bold};
 `
 
-const Header = ({ type }) => (
+const Header = () => (
   <Wrapper>
-    <LogoWrapper>
-      <Logo src={type === 'advanced' ? logo2Img : logoImg} alt="logo" />
-    </LogoWrapper>
+    <Logo />
     <ScoreWrapper>
       <Title>Score</Title>
       <Score>12</Score>
     </ScoreWrapper>
   </Wrapper>
 )
-
-Header.propTypes = {
-  type: PropTypes.string,
-}
-
-Header.defaultProps = {
-  type: 'normal',
-}
 
 export default Header
