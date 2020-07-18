@@ -40,6 +40,7 @@ module.exports = {
         layouts: path.join(__dirname, 'src/layouts'),
         theme: path.join(__dirname, 'src/theme'),
         steps: path.join(__dirname, 'src/steps'),
+        hooks: path.join(__dirname, 'src/hooks'),
         context: path.join(__dirname, 'src/context'),
         icons: path.join(__dirname, 'src/assets/icons'),
       },

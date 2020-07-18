@@ -93,13 +93,10 @@ const Options = () => {
       {mode === 'advanced' ? (
         <Wrapper type="pentagon">
           <OptionWrapper>
-            <Option type="rock" />
+            <Option type="scissors" />
           </OptionWrapper>
           <OptionWrapper>
             <Option type="paper" />
-          </OptionWrapper>
-          <OptionWrapper>
-            <Option type="scissors" />
           </OptionWrapper>
           <OptionWrapper>
             <Option type="lizard" />
@@ -107,17 +104,20 @@ const Options = () => {
           <OptionWrapper>
             <Option type="spock" />
           </OptionWrapper>
-        </Wrapper>
-      ) : (
-        <Wrapper>
           <OptionWrapper>
             <Option type="rock" />
           </OptionWrapper>
+        </Wrapper>
+      ) : (
+        <Wrapper>
           <OptionWrapper>
             <Option type="paper" />
           </OptionWrapper>
           <OptionWrapper>
             <Option type="scissors" />
+          </OptionWrapper>
+          <OptionWrapper>
+            <Option type="rock" />
           </OptionWrapper>
         </Wrapper>
       )}

@@ -7,10 +7,14 @@ import Header from 'components/Header/Header'
 import Button from 'components/Button/Button'
 
 const Content = styled.main`
-  padding: 100px 0 50px;
+  padding: 60px 0;
+  ${({ theme }) => theme.mq.md} {
+    padding: 100px 0;
+  }
 `
 
 const ButtonWrapper = styled.div`
+  margin-top: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -33,8 +37,12 @@ const GameLayout = ({ children }) => {
     setActiveStep('menu')
   }
 
-  const toggleRulesVisibility = () => {
-    setRulesVisibility(!areRulesVisible)
+  const showRules = () => {
+    setRulesVisibility(true)
+  }
+
+  const hideRules = () => {
+    setRulesVisibility(false)
   }
 
   return (
@@ -43,9 +51,9 @@ const GameLayout = ({ children }) => {
       <Content>{children}</Content>
       <ButtonWrapper>
         <Button onClick={handleChangeMode}>Change mode</Button>
-        <Button onClick={toggleRulesVisibility}>Rules</Button>
+        <Button onClick={showRules}>Rules</Button>
       </ButtonWrapper>
-      <Rules isVisible={areRulesVisible} close={toggleRulesVisibility} />
+      <Rules isVisible={areRulesVisible} close={hideRules} />
     </>
   )
 }

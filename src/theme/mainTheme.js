@@ -27,7 +27,7 @@ export const theme = {
     xs: '1.2rem',
     s: '1.4rem',
     m: '1.6rem',
-    lg: '2.2rem',
+    lg: '3rem',
     xl: '5.4rem',
   },
   mq: Object.keys(breakpoints).reduce((acc, breakpoint) => {

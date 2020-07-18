@@ -13,8 +13,11 @@ const Background = styled.div`
 `
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 100%;
+  height: 100vh;
   max-width: 1200px;
   padding: 10px 10px 30px;
   ${({ theme }) => theme.mq.md} {
