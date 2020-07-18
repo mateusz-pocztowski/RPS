@@ -16,13 +16,13 @@ const Content = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
-  padding: 10px;
+  padding: 10px 10px 30px;
   ${({ theme }) => theme.mq.md} {
     padding: 30px;
   }
 `
 
-const Layout = ({ children }) => {
+const MainLayout = ({ children }) => {
   return (
     <ThemeProvider theme={mainTheme}>
       <GlobalStyle />
@@ -32,8 +32,8 @@ const Layout = ({ children }) => {
   )
 }
 
-Layout.propTypes = {
+MainLayout.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
 }
 
-export default Layout
+export default MainLayout

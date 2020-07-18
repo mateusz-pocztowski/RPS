@@ -1,22 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
-import Layout from 'layout/Layout'
+import React, { useState } from 'react'
+import MainLayout from 'layouts/MainLayout'
+import GameLayout from 'layouts/GameLayout'
 import SEO from 'components/SEO/SEO'
-import Header from 'components/Header/Header'
-import Options from 'components/Options/Options'
+import Menu from 'steps/Menu/Menu'
+import Options from 'steps/Options/Options'
+import StepContext from 'context/StepContext'
 
-const OptionsWrapper = styled.main`
-  padding: 100px 0;
-`
+const IndexPage = () => {
+  const [activeStep, setActiveStep] = useState('menu')
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Header />
-    <OptionsWrapper>
-      <Options />
-    </OptionsWrapper>
-  </Layout>
-)
+  return (
+    <StepContext.Provider value={{ activeStep, setActiveStep }}>
+      <MainLayout>
+        <SEO title="Home" />
+        {activeStep === 'menu' ? (
+          <Menu />
+        ) : (
+          <GameLayout>
+            {activeStep === 'optionChoose' && <Options />}
+          </GameLayout>
+        )}
+      </MainLayout>
+    </StepContext.Provider>
+  )
+}
 
 export default IndexPage

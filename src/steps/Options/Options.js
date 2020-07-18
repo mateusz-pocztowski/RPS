@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
-import Option from 'components/Options/Option'
+import Option from 'steps/Options/Option'
 import TriangleBg from 'icons/bg-triangle.svg'
 import PentagonBg from 'icons/bg-pentagon.svg'
 
