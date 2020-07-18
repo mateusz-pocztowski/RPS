@@ -31,7 +31,7 @@ const Menu = () => {
   const { setMode, setActiveStep } = useContext(AppContext)
 
   const handleOption = type => {
-    setActiveStep('optionChoose')
+    setActiveStep('options')
     setMode(type)
   }
 

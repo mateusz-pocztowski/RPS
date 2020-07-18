@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Logo from 'components/Logo/Logo'
+import AppContext from 'context/AppContext'
 
 const Wrapper = styled.header`
   display: flex;
@@ -34,14 +35,17 @@ const Score = styled.span`
   font-weight: ${({ theme }) => theme.bold};
 `
 
-const Header = () => (
-  <Wrapper>
-    <Logo />
-    <ScoreWrapper>
-      <Title>Score</Title>
-      <Score>12</Score>
-    </ScoreWrapper>
-  </Wrapper>
-)
+const Header = () => {
+  const { score } = useContext(AppContext)
+  return (
+    <Wrapper>
+      <Logo />
+      <ScoreWrapper>
+        <Title>Score</Title>
+        <Score>{score}</Score>
+      </ScoreWrapper>
+    </Wrapper>
+  )
+}
 
 export default Header

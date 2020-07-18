@@ -8,7 +8,7 @@ import Button from 'components/Button/Button'
 
 const Content = styled.main`
   padding: 60px 0;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.s} {
     padding: 100px 0;
   }
 `
@@ -59,7 +59,10 @@ const GameLayout = ({ children }) => {
 }
 
 GameLayout.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 }
 
 export default GameLayout

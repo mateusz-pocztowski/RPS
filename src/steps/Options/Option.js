@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+import AppContext from 'context/AppContext'
 import scissorsIcon from 'icons/icon-scissors.svg'
 import paperIcon from 'icons/icon-paper.svg'
 import rockIcon from 'icons/icon-rock.svg'
@@ -57,6 +58,16 @@ const Wrapper = styled.div`
   width: 150px;
   height: 150px;
   }
+  ${({ medium }) =>
+    medium &&
+    css`
+      transform: scale(1.1);
+      cursor: auto;
+      &:hover,
+      &:active {
+        transform: scale(1.1);
+      }
+    `}
   ${({ type }) =>
     type === 'scissors' &&
     css`
@@ -99,16 +110,33 @@ const Wrapper = styled.div`
     `}
 `
 
-const Option = ({ type }) => (
-  <Wrapper type={type}>
-    <Content>
-      <Icon />
-    </Content>
-  </Wrapper>
-)
+const Option = ({ type, medium }) => {
+  const { setActiveStep, setUserPick, activeStep } = useContext(AppContext)
+
+  const handleClick = () => {
+    if (activeStep === 'options') {
+      setUserPick(type)
+      setActiveStep('userPick')
+    }
+  }
+
+  return (
+    <Wrapper medium={medium} onClick={handleClick} type={type}>
+      <Content>
+        <Icon />
+      </Content>
+    </Wrapper>
+  )
+}
 
 Option.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  medium: PropTypes.bool,
+}
+
+Option.defaultProps = {
+  type: null,
+  medium: false,
 }
 
 export default Option
