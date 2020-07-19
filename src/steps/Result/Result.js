@@ -58,6 +58,7 @@ const Placeholder = styled.div`
     background: rgba(255, 255, 255, 0.05);
     transition: 0.3s ease;
     transition-delay: 0.3s;
+    z-index: -1;
     ${({ theme }) => theme.mq.md} {
       width: 300px;
       height: 300px;
