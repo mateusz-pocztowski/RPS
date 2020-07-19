@@ -29,6 +29,7 @@ const useGetResult = () => {
         ]
       if (userPick === AIPick) {
         setResult('draw')
+        setScore(currentScore)
       } else if (
         (userPick === 'scissors' &&
           (AIPick === 'paper' || AIPick === 'lizard')) ||

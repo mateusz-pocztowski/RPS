@@ -1,16 +1,14 @@
-const initialValues = {
+export const initialValues = {
   activeStep: 'menu',
   userPick: null,
   currentMode: null,
   currentScore: 0,
 }
 
-export const initialState = localStorage.getItem('rpsState')
-  ? JSON.parse(localStorage.getItem('rpsState'))
-  : initialValues
-
 export const rootReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_INITIAL_STATE':
+      return action.payload
     case 'STEP':
       localStorage.setItem(
         'rpsState',

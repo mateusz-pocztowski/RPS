@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import MainLayout from 'layouts/MainLayout'
 import GameLayout from 'layouts/GameLayout'
 import SEO from 'components/SEO/SEO'
@@ -6,15 +6,22 @@ import Menu from 'steps/Menu/Menu'
 import Options from 'steps/Options/Options'
 import Result from 'steps/Result/Result'
 import AppContext from 'context/AppContext'
-import { rootReducer, initialState } from 'store'
+import { rootReducer, initialValues } from 'store'
 
 const IndexPage = () => {
-  const [state, dispatch] = useReducer(rootReducer, initialState)
+  const [state, dispatch] = useReducer(rootReducer, initialValues)
   const { activeStep, currentMode, currentScore, userPick } = state
 
   const handleDispatch = (type, payload = null) => {
     dispatch({ type, payload })
   }
+
+  useEffect(() => {
+    const persistedState = localStorage.getItem('rpsState')
+      ? JSON.parse(localStorage.getItem('rpsState'))
+      : initialValues
+    handleDispatch('SET_INITIAL_STATE', persistedState)
+  }, [])
 
   const value = {
     activeStep,
