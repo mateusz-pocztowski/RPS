@@ -61,25 +61,28 @@ const Wrapper = styled(motion.div)`
         }
         &:nth-child(3) {
           bottom: -20px;
-          left: 65px;
+          left: 200px;
           ${({ theme }) => theme.mq.s} {
-            left: 70px;
+            left: 250px;
             bottom: -40px;
+          }
+          ${({ theme }) => theme.mq.md} {
+            left: 330px;
           }
         }
         &:nth-child(4) {
+          bottom: -20px;
+          left: 20px;
+          ${({ theme }) => theme.mq.s} {
+            bottom: -40px;
+          }
+        }
+        &:nth-child(5) {
           top: 38%;
           left: -18px;
           transform: translateY(-50%);
           ${({ theme }) => theme.mq.s} {
             left: -50px;
-          }
-        }
-        &:nth-child(5) {
-          bottom: -20px;
-          right: 12px;
-          ${({ theme }) => theme.mq.s} {
-            bottom: -40px;
           }
         }
       }

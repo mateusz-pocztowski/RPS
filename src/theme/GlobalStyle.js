@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.background};
+    background: ${({ theme }) => theme.bgColor};
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: 1.6rem;
   }

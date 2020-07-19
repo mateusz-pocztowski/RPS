@@ -14,6 +14,7 @@ export const theme = {
   dark: 'hsl(229, 25%, 31%)',
   score: 'hsl(229, 64%, 46%)',
   gray: 'hsl(217, 16%, 45%)',
+  bgColor: 'hsl(237, 49%, 15%)',
   background:
     'radial-gradient(circle, #1f3756, #1b2e4f, #182648, #161d41, #141539)',
   scissors: 'linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%))',

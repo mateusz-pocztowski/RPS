@@ -55,7 +55,7 @@ const Placeholder = styled.div`
     opacity: ${({ isActive }) => (isActive ? '1' : '0')};
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     transition: 0.3s ease;
     transition-delay: 0.3s;
     ${({ theme }) => theme.mq.md} {
@@ -68,8 +68,8 @@ const Placeholder = styled.div`
     width: 300px;
     height: 300px;
     ${({ theme }) => theme.mq.md} {
-      width: 400px;
-      height: 400px;
+      width: 450px;
+      height: 450px;
     }
   }
 `
