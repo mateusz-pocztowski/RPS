@@ -2,9 +2,9 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Rock Paper Scissors Game`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Rock Paper Scissors`,
+    description: `Rock paper scissors is a simple but interesting game. Many of us used to play it in a school to resolve disputes or just to spend some time. This version has two modes.`,
+    author: `@mateusz-pocztowski`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

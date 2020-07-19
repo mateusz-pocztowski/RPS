@@ -10,6 +10,7 @@ const Background = styled.div`
   height: 100vh;
   background: ${({ theme }) => theme.background};
   z-index: -1;
+  overflow: hidden;
 `
 
 const Content = styled.div`
@@ -20,6 +21,7 @@ const Content = styled.div`
   height: 100vh;
   max-width: 1200px;
   padding: 10px 10px 30px;
+  overflow-x: hidden;
   ${({ theme }) => theme.mq.md} {
     padding: 30px;
   }
