@@ -86,11 +86,11 @@ const Wrapper = styled.div`
 `
 
 const Options = () => {
-  const { mode } = useContext(AppContext)
+  const { currentMode } = useContext(AppContext)
 
   return (
     <>
-      {mode === 'advanced' ? (
+      {currentMode === 'advanced' ? (
         <Wrapper type="pentagon">
           <OptionWrapper>
             <Option type="scissors" />

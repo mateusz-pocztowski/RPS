@@ -36,13 +36,13 @@ const Score = styled.span`
 `
 
 const Header = () => {
-  const { score } = useContext(AppContext)
+  const { currentScore } = useContext(AppContext)
   return (
     <Wrapper>
       <Logo />
       <ScoreWrapper>
         <Title>Score</Title>
-        <Score>{score}</Score>
+        <Score>{currentScore}</Score>
       </ScoreWrapper>
     </Wrapper>
   )

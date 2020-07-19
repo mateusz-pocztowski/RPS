@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import AppContext from 'context/AppContext'
 import Option from 'steps/Options/Option'
 import Button from 'components/Button/Button'
+import useGetResult from 'hooks/useGetResult'
 
 const Wrapper = styled.div`
   padding: 0 20px;
@@ -35,7 +35,7 @@ const ResultWrapper = styled(InnerWrapper)`
   }
 `
 
-const Result = styled.h2`
+const Title = styled.h2`
   margin: 15px 0;
   font-size: ${({ theme }) => theme.fontSize.xl};
   color: ${({ theme }) => theme.white};
@@ -56,42 +56,8 @@ const Name = styled.h3`
   }
 `
 
-const modes = {
-  normal: ['rock', 'paper', 'scissors'],
-  advanced: ['rock', 'paper', 'scissors', 'lizard', 'spock'],
-}
-
-const UserPick = () => {
-  const [result, setResult] = useState(null)
-  const [housePick, setHousePick] = useState(null)
-  const { userPick, mode, setActiveStep, score, setScore } = useContext(
-    AppContext
-  )
-
-  useEffect(() => {
-    const setDrawResult = () => {
-      const AIPick = modes[mode][Math.floor(Math.random() * modes[mode].length)]
-      if (userPick === AIPick) {
-        setResult('draw')
-      } else if (
-        (userPick === 'scissors' &&
-          (AIPick === 'paper' || AIPick === 'lizard')) ||
-        (userPick === 'paper' && (AIPick === 'rock' || AIPick === 'spock')) ||
-        (userPick === 'rock' &&
-          (AIPick === 'scissors' || AIPick === 'lizard')) ||
-        (userPick === 'lizard' && (AIPick === 'spock' || AIPick === 'paper')) ||
-        (userPick === 'spock' && (AIPick === 'scissors' || AIPick === 'rock'))
-      ) {
-        setResult('win')
-        setScore(score + 1)
-      } else {
-        setResult('lose')
-        if (score > 0) setScore(score - 1)
-      }
-      setHousePick(AIPick)
-    }
-    setDrawResult()
-  }, [])
+const Result = () => {
+  const { result, userPick, handleClick, housePick } = useGetResult()
 
   return (
     <Wrapper>
@@ -100,8 +66,8 @@ const UserPick = () => {
         <Name>You picked</Name>
       </InnerWrapper>
       <ResultWrapper>
-        <Result>{result}</Result>
-        <Button onClick={() => setActiveStep('options')} secondary>
+        <Title>{result}</Title>
+        <Button onClick={handleClick} secondary>
           Play again
         </Button>
       </ResultWrapper>
@@ -113,4 +79,4 @@ const UserPick = () => {
   )
 }
 
-export default UserPick
+export default Result

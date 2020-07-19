@@ -116,7 +116,7 @@ const Option = ({ type, medium }) => {
   const handleClick = () => {
     if (activeStep === 'options') {
       setUserPick(type)
-      setActiveStep('userPick')
+      setActiveStep('result')
     }
   }
 

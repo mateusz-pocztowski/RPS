@@ -64,7 +64,7 @@ const Image = styled.img`
 `
 
 const Rules = ({ isVisible, close }) => {
-  const { mode } = useContext(AppContext)
+  const { currentMode } = useContext(AppContext)
   const modalRef = useRef(null)
 
   useOutsideClick(modalRef, close)
@@ -76,7 +76,10 @@ const Rules = ({ isVisible, close }) => {
         <TitleWrapper>
           <Title>Rules</Title>
         </TitleWrapper>
-        <Image src={mode === 'advanced' ? rules2Img : rulesImg} alt="rules" />
+        <Image
+          src={currentMode === 'advanced' ? rules2Img : rulesImg}
+          alt="rules"
+        />
       </Wrapper>
     </Overlay>
   )

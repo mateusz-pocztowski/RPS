@@ -1,27 +1,27 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import MainLayout from 'layouts/MainLayout'
 import GameLayout from 'layouts/GameLayout'
 import SEO from 'components/SEO/SEO'
 import Menu from 'steps/Menu/Menu'
 import Options from 'steps/Options/Options'
-import UserPick from 'steps/UserPick/UserPick'
+import Result from 'steps/Result/Result'
 import AppContext from 'context/AppContext'
+import { rootReducer, initialState } from 'store'
 
 const IndexPage = () => {
-  const [activeStep, setActiveStep] = useState('menu')
-  const [userPick, setUserPick] = useState(null)
-  const [mode, setMode] = useState(null)
-  const [score, setScore] = useState(0)
+  const [state, dispatch] = useReducer(rootReducer, initialState)
+  const { activeStep, currentMode, currentScore, userPick } = state
 
   const value = {
     activeStep,
-    setActiveStep,
+    currentMode,
+    currentScore,
     userPick,
-    setUserPick,
-    mode,
-    score,
-    setScore,
-    setMode,
+    setMode: mode => dispatch({ type: 'MODE', payload: mode }),
+    setActiveStep: step => dispatch({ type: 'STEP', payload: step }),
+    setUserPick: pick => dispatch({ type: 'USER_PICK', payload: pick }),
+    setScore: score => dispatch({ type: 'SCORE', payload: score }),
+    clear: () => dispatch({ type: 'CLEAR' }),
   }
 
   return (
@@ -33,7 +33,7 @@ const IndexPage = () => {
         ) : (
           <GameLayout>
             {activeStep === 'options' && <Options />}
-            {activeStep === 'userPick' && <UserPick />}
+            {activeStep === 'result' && <Result />}
           </GameLayout>
         )}
       </MainLayout>

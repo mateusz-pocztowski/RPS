@@ -41,6 +41,7 @@ module.exports = {
         theme: path.join(__dirname, 'src/theme'),
         steps: path.join(__dirname, 'src/steps'),
         hooks: path.join(__dirname, 'src/hooks'),
+        store: path.join(__dirname, 'src/store'),
         context: path.join(__dirname, 'src/context'),
         icons: path.join(__dirname, 'src/assets/icons'),
       },
