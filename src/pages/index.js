@@ -12,16 +12,20 @@ const IndexPage = () => {
   const [state, dispatch] = useReducer(rootReducer, initialState)
   const { activeStep, currentMode, currentScore, userPick } = state
 
+  const handleDispatch = (type, payload = null) => {
+    dispatch({ type, payload })
+  }
+
   const value = {
     activeStep,
     currentMode,
     currentScore,
     userPick,
-    setMode: mode => dispatch({ type: 'MODE', payload: mode }),
-    setActiveStep: step => dispatch({ type: 'STEP', payload: step }),
-    setUserPick: pick => dispatch({ type: 'USER_PICK', payload: pick }),
-    setScore: score => dispatch({ type: 'SCORE', payload: score }),
-    clear: () => dispatch({ type: 'CLEAR' }),
+    setMode: mode => handleDispatch('MODE', mode),
+    setActiveStep: step => handleDispatch('STEP', step),
+    setUserPick: pick => handleDispatch('USER_PICK', pick),
+    setScore: score => handleDispatch('SCORE', score),
+    clear: () => handleDispatch('CLEAR'),
   }
 
   return (
