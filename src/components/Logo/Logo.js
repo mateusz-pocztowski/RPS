@@ -5,7 +5,8 @@ import logoImg from 'icons/logo.svg'
 import logo2Img from 'icons/logo-bonus.svg'
 
 const Wrapper = styled.div`
-  width: 120px;
+  max-width: 120px;
+  height: ${({ isAdvanced }) => (isAdvanced ? '100px' : '75px')};
 `
 
 const Image = styled.img`
@@ -17,7 +18,7 @@ const Image = styled.img`
 const Logo = () => {
   const { currentMode } = useContext(AppContext)
   return (
-    <Wrapper>
+    <Wrapper isAdvanced={currentMode === 'advanced'}>
       <Image src={currentMode === 'advanced' ? logo2Img : logoImg} alt="logo" />
     </Wrapper>
   )

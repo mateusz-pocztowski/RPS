@@ -129,17 +129,17 @@ const Options = () => {
           </OptionWrapper>
           <OptionWrapper>
             <motion.div variants={item}>
+              <Option type="rock" />
+            </motion.div>
+          </OptionWrapper>
+          <OptionWrapper>
+            <motion.div variants={item}>
               <Option type="lizard" />
             </motion.div>
           </OptionWrapper>
           <OptionWrapper>
             <motion.div variants={item}>
               <Option type="spock" />
-            </motion.div>
-          </OptionWrapper>
-          <OptionWrapper>
-            <motion.div variants={item}>
-              <Option type="rock" />
             </motion.div>
           </OptionWrapper>
         </Wrapper>
