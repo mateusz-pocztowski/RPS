@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Logo from 'components/Logo/Logo'
 import AppContext from 'context/AppContext'
+import { motion } from 'framer-motion'
 
 const Wrapper = styled.header`
   display: flex;
@@ -38,13 +39,19 @@ const Score = styled.span`
 const Header = () => {
   const { currentScore } = useContext(AppContext)
   return (
-    <Wrapper>
-      <Logo />
-      <ScoreWrapper>
-        <Title>Score</Title>
-        <Score>{currentScore}</Score>
-      </ScoreWrapper>
-    </Wrapper>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Wrapper>
+        <Logo />
+        <ScoreWrapper>
+          <Title>Score</Title>
+          <Score>{currentScore}</Score>
+        </ScoreWrapper>
+      </Wrapper>
+    </motion.div>
   )
 }
 

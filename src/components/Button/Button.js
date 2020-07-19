@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 const Button = styled.button`
   display: block;
+  width: 100%;
   background-color: transparent;
   color: ${({ theme }) => theme.white};
   border: 2px solid ${({ theme }) => theme.white};

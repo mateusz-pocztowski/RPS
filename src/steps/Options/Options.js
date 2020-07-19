@@ -4,8 +4,9 @@ import styled, { css } from 'styled-components'
 import Option from 'steps/Options/Option'
 import TriangleBg from 'icons/bg-triangle.svg'
 import PentagonBg from 'icons/bg-pentagon.svg'
+import { motion } from 'framer-motion'
 
-const OptionWrapper = styled.div`
+const OptionWrapper = styled(motion.div)`
   position: absolute;
   &:nth-child(1) {
     top: -30px;
@@ -22,7 +23,7 @@ const OptionWrapper = styled.div`
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   position: relative;
   margin: 0 auto;
   width: 270px;
@@ -85,39 +86,76 @@ const Wrapper = styled.div`
     `}
 `
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      duration: 0.35,
+    },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, scale: 0.5 },
+  show: { opacity: 1, scale: 1 },
+}
+
 const Options = () => {
   const { currentMode } = useContext(AppContext)
 
   return (
     <>
       {currentMode === 'advanced' ? (
-        <Wrapper type="pentagon">
+        <Wrapper
+          type="pentagon"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
           <OptionWrapper>
-            <Option type="scissors" />
+            <motion.div variants={item}>
+              <Option type="scissors" />
+            </motion.div>
           </OptionWrapper>
           <OptionWrapper>
-            <Option type="paper" />
+            <motion.div variants={item}>
+              <Option type="paper" />
+            </motion.div>
           </OptionWrapper>
           <OptionWrapper>
-            <Option type="lizard" />
+            <motion.div variants={item}>
+              <Option type="lizard" />
+            </motion.div>
           </OptionWrapper>
           <OptionWrapper>
-            <Option type="spock" />
+            <motion.div variants={item}>
+              <Option type="spock" />
+            </motion.div>
           </OptionWrapper>
           <OptionWrapper>
-            <Option type="rock" />
+            <motion.div variants={item}>
+              <Option type="rock" />
+            </motion.div>
           </OptionWrapper>
         </Wrapper>
       ) : (
-        <Wrapper>
+        <Wrapper variants={container} initial="hidden" animate="show">
           <OptionWrapper>
-            <Option type="paper" />
+            <motion.div variants={item}>
+              <Option type="paper" />
+            </motion.div>
           </OptionWrapper>
           <OptionWrapper>
-            <Option type="scissors" />
+            <motion.div variants={item}>
+              <Option type="scissors" />
+            </motion.div>
           </OptionWrapper>
           <OptionWrapper>
-            <Option type="rock" />
+            <motion.div variants={item}>
+              <Option type="rock" />
+            </motion.div>
           </OptionWrapper>
         </Wrapper>
       )}

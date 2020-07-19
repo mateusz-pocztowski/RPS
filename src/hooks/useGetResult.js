@@ -38,11 +38,16 @@ const useGetResult = () => {
         (userPick === 'lizard' && (AIPick === 'spock' || AIPick === 'paper')) ||
         (userPick === 'spock' && (AIPick === 'scissors' || AIPick === 'rock'))
       ) {
-        setResult('win')
-        setScore(currentScore + 1)
+        setTimeout(() => {
+          if (currentMode !== null) setScore(currentScore + 1)
+          setResult('win')
+        }, 2000)
       } else {
-        setResult('lose')
-        if (currentScore > 0) setScore(currentScore - 1)
+        setTimeout(() => {
+          if (currentScore > 0 && currentMode !== null)
+            setScore(currentScore - 1)
+          setResult('lose')
+        }, 2000)
       }
       setHousePick(AIPick)
     }
